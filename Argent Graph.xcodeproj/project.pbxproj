@@ -1,0 +1,434 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C9A614D423351999006C2613 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A614D323351999006C2613 /* AppDelegate.swift */; };
+		C9A614D623351999006C2613 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A614D523351999006C2613 /* SceneDelegate.swift */; };
+		C9A614D823351999006C2613 /* LookupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A614D723351999006C2613 /* LookupView.swift */; };
+		C9A614DA2335199D006C2613 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A614D92335199D006C2613 /* Assets.xcassets */; };
+		C9A614DD2335199D006C2613 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A614DC2335199D006C2613 /* Preview Assets.xcassets */; };
+		C9A614E02335199D006C2613 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A614DE2335199D006C2613 /* LaunchScreen.storyboard */; };
+		C9A614F72335204E006C2613 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = C9A614F62335204E006C2613 /* Apollo */; };
+		C9A614FC23352A78006C2613 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A614FB23352A78006C2613 /* API.swift */; };
+		C9A614FE23360A7D006C2613 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A614FD23360A7D006C2613 /* DetailView.swift */; };
+		C9B2E6C22337CBE500A6FB83 /* Apollo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B2E6C12337CBE500A6FB83 /* Apollo.swift */; };
+		C9B2E6C42337CC3700A6FB83 /* GuardianModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B2E6C32337CC3700A6FB83 /* GuardianModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C94B3EC42337D3890031D771 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		C9A614D023351999006C2613 /* Argent Graph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Argent Graph.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9A614D323351999006C2613 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C9A614D523351999006C2613 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C9A614D723351999006C2613 /* LookupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupView.swift; sourceTree = "<group>"; };
+		C9A614D92335199D006C2613 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C9A614DC2335199D006C2613 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C9A614DF2335199D006C2613 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C9A614E12335199D006C2613 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9A614FA2335256C006C2613 /* Guardians.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Guardians.graphql; sourceTree = "<group>"; };
+		C9A614FB23352A78006C2613 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C9A614FD23360A7D006C2613 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		C9B2E6C12337CBE500A6FB83 /* Apollo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apollo.swift; sourceTree = "<group>"; };
+		C9B2E6C32337CC3700A6FB83 /* GuardianModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardianModel.swift; sourceTree = "<group>"; };
+		C9B2E6C62337D20500A6FB83 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C9A614CD23351999006C2613 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A614F72335204E006C2613 /* Apollo in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C9A614C723351999006C2613 = {
+			isa = PBXGroup;
+			children = (
+				C9B2E6C62337D20500A6FB83 /* README.md */,
+				C94B3EC42337D3890031D771 /* LICENSE */,
+				C9A614D223351999006C2613 /* Argent Graph */,
+				C9A614D123351999006C2613 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C9A614D123351999006C2613 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9A614D023351999006C2613 /* Argent Graph.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C9A614D223351999006C2613 /* Argent Graph */ = {
+			isa = PBXGroup;
+			children = (
+				C9A614D323351999006C2613 /* AppDelegate.swift */,
+				C9A614D523351999006C2613 /* SceneDelegate.swift */,
+				C9A614FB23352A78006C2613 /* API.swift */,
+				C9B2E6C12337CBE500A6FB83 /* Apollo.swift */,
+				C9B2E6C32337CC3700A6FB83 /* GuardianModel.swift */,
+				C9B2E6C02337CBA500A6FB83 /* Views */,
+				C9B2E6C52337CD1C00A6FB83 /* Resources */,
+				C9A614DB2335199D006C2613 /* Preview Content */,
+			);
+			path = "Argent Graph";
+			sourceTree = "<group>";
+		};
+		C9A614DB2335199D006C2613 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C9A614DC2335199D006C2613 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C9B2E6C02337CBA500A6FB83 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C9A614D723351999006C2613 /* LookupView.swift */,
+				C9A614FD23360A7D006C2613 /* DetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C9B2E6C52337CD1C00A6FB83 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C9A614D92335199D006C2613 /* Assets.xcassets */,
+				C9A614DE2335199D006C2613 /* LaunchScreen.storyboard */,
+				C9A614FA2335256C006C2613 /* Guardians.graphql */,
+				C9A614E12335199D006C2613 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C9A614CF23351999006C2613 /* Argent Graph */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9A614E42335199D006C2613 /* Build configuration list for PBXNativeTarget "Argent Graph" */;
+			buildPhases = (
+				C9A614F023351EEE006C2613 /* Apollo */,
+				C9A614CC23351999006C2613 /* Sources */,
+				C9A614CD23351999006C2613 /* Frameworks */,
+				C9A614CE23351999006C2613 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Argent Graph";
+			packageProductDependencies = (
+				C9A614F62335204E006C2613 /* Apollo */,
+			);
+			productName = "Guardian Explorer";
+			productReference = C9A614D023351999006C2613 /* Argent Graph.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C9A614C823351999006C2613 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = Argent;
+				TargetAttributes = {
+					C9A614CF23351999006C2613 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+				};
+			};
+			buildConfigurationList = C9A614CB23351999006C2613 /* Build configuration list for PBXProject "Argent Graph" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C9A614C723351999006C2613;
+			packageReferences = (
+				C9A614F52335204E006C2613 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
+			productRefGroup = C9A614D123351999006C2613 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C9A614CF23351999006C2613 /* Argent Graph */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9A614CE23351999006C2613 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A614E02335199D006C2613 /* LaunchScreen.storyboard in Resources */,
+				C9A614DD2335199D006C2613 /* Preview Assets.xcassets in Resources */,
+				C9A614DA2335199D006C2613 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C9A614F023351EEE006C2613 /* Apollo */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Apollo;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Go to the build root and go back up to where SPM keeps the apollo iOS framework checked out.\ncd \"${BUILD_ROOT}\"\ncd \"../../SourcePackages/checkouts/apollo-ios/scripts\"\n\nAPOLLO_SCRIPT_PATH=\"$(pwd)\"\n\nif [ -z \"${APOLLO_SCRIPT_PATH}\" ]; then\n    echo \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 0\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n# apollo schema:download --endpoint=https://api.thegraph.com/subgraphs/name/th3m477/argent\n#\"${APOLLO_SCRIPT_PATH}\"/check-and-run-apollo-cli.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C9A614CC23351999006C2613 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A614D423351999006C2613 /* AppDelegate.swift in Sources */,
+				C9A614D623351999006C2613 /* SceneDelegate.swift in Sources */,
+				C9A614FC23352A78006C2613 /* API.swift in Sources */,
+				C9B2E6C42337CC3700A6FB83 /* GuardianModel.swift in Sources */,
+				C9A614FE23360A7D006C2613 /* DetailView.swift in Sources */,
+				C9B2E6C22337CBE500A6FB83 /* Apollo.swift in Sources */,
+				C9A614D823351999006C2613 /* LookupView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C9A614DE2335199D006C2613 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9A614DF2335199D006C2613 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C9A614E22335199D006C2613 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C9A614E32335199D006C2613 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C9A614E52335199D006C2613 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Argent Graph/Preview Content\"";
+				DEVELOPMENT_TEAM = 6NR6QL5648;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Argent Graph/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mcm.argent.graph;
+				PRODUCT_NAME = "Argent Graph";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		C9A614E62335199D006C2613 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Argent Graph/Preview Content\"";
+				DEVELOPMENT_TEAM = 6NR6QL5648;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Argent Graph/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mcm.argent.graph;
+				PRODUCT_NAME = "Argent Graph";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C9A614CB23351999006C2613 /* Build configuration list for PBXProject "Argent Graph" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9A614E22335199D006C2613 /* Debug */,
+				C9A614E32335199D006C2613 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9A614E42335199D006C2613 /* Build configuration list for PBXNativeTarget "Argent Graph" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9A614E52335199D006C2613 /* Debug */,
+				C9A614E62335199D006C2613 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C9A614F52335204E006C2613 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.15.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C9A614F62335204E006C2613 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C9A614F52335204E006C2613 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C9A614C823351999006C2613 /* Project object */;
+}

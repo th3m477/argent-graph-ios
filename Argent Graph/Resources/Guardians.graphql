@@ -1,0 +1,19 @@
+query Guardians($wallet: Bytes) {
+  guardians(where: {wallet: $wallet}) {
+    id
+    address
+    active
+    updatedAt
+    activeAfter
+    revokeAfter
+  }
+}
+
+query GuardianActivity($wallet: Bytes) {
+  guardianActivities(where: {wallet: $wallet}) {
+    id
+    address
+    state
+    date
+  }
+}
