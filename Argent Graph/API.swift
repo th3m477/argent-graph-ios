@@ -68,14 +68,24 @@ public final class GuardiansQuery: GraphQLQuery {
   ///     __typename
   ///     id
   ///     address
-  ///     active
-  ///     updatedAt
-  ///     activeAfter
-  ///     revokeAfter
+  ///     removeAfter
+  ///   }
+  ///   pendingGuardians(where: {wallet: $wallet}) {
+  ///     __typename
+  ///     id
+  ///     address
+  ///     addAfter
+  ///   }
+  ///   guardianActivities(where: {wallet: $wallet}) {
+  ///     __typename
+  ///     id
+  ///     address
+  ///     state
+  ///     date
   ///   }
   /// }
   public let operationDefinition =
-    "query Guardians($wallet: Bytes) { guardians(where: {wallet: $wallet}) { __typename id address active updatedAt activeAfter revokeAfter } }"
+    "query Guardians($wallet: Bytes) { guardians(where: {wallet: $wallet}) { __typename id address removeAfter } pendingGuardians(where: {wallet: $wallet}) { __typename id address addAfter } guardianActivities(where: {wallet: $wallet}) { __typename id address state date } }"
 
   public let operationName = "Guardians"
 
@@ -94,6 +104,8 @@ public final class GuardiansQuery: GraphQLQuery {
 
     public static let selections: [GraphQLSelection] = [
       GraphQLField("guardians", arguments: ["where": ["wallet": GraphQLVariable("wallet")]], type: .nonNull(.list(.nonNull(.object(Guardian.selections))))),
+      GraphQLField("pendingGuardians", arguments: ["where": ["wallet": GraphQLVariable("wallet")]], type: .nonNull(.list(.nonNull(.object(PendingGuardian.selections))))),
+      GraphQLField("guardianActivities", arguments: ["where": ["wallet": GraphQLVariable("wallet")]], type: .nonNull(.list(.nonNull(.object(GuardianActivity.selections))))),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -102,8 +114,8 @@ public final class GuardiansQuery: GraphQLQuery {
       self.resultMap = unsafeResultMap
     }
 
-    public init(guardians: [Guardian]) {
-      self.init(unsafeResultMap: ["__typename": "Query", "guardians": guardians.map { (value: Guardian) -> ResultMap in value.resultMap }])
+    public init(guardians: [Guardian], pendingGuardians: [PendingGuardian], guardianActivities: [GuardianActivity]) {
+      self.init(unsafeResultMap: ["__typename": "Query", "guardians": guardians.map { (value: Guardian) -> ResultMap in value.resultMap }, "pendingGuardians": pendingGuardians.map { (value: PendingGuardian) -> ResultMap in value.resultMap }, "guardianActivities": guardianActivities.map { (value: GuardianActivity) -> ResultMap in value.resultMap }])
     }
 
     public var guardians: [Guardian] {
@@ -115,6 +127,24 @@ public final class GuardiansQuery: GraphQLQuery {
       }
     }
 
+    public var pendingGuardians: [PendingGuardian] {
+      get {
+        return (resultMap["pendingGuardians"] as! [ResultMap]).map { (value: ResultMap) -> PendingGuardian in PendingGuardian(unsafeResultMap: value) }
+      }
+      set {
+        resultMap.updateValue(newValue.map { (value: PendingGuardian) -> ResultMap in value.resultMap }, forKey: "pendingGuardians")
+      }
+    }
+
+    public var guardianActivities: [GuardianActivity] {
+      get {
+        return (resultMap["guardianActivities"] as! [ResultMap]).map { (value: ResultMap) -> GuardianActivity in GuardianActivity(unsafeResultMap: value) }
+      }
+      set {
+        resultMap.updateValue(newValue.map { (value: GuardianActivity) -> ResultMap in value.resultMap }, forKey: "guardianActivities")
+      }
+    }
+
     public struct Guardian: GraphQLSelectionSet, Identifiable {
       public static let possibleTypes = ["Guardian"]
 
@@ -122,10 +152,7 @@ public final class GuardiansQuery: GraphQLQuery {
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("address", type: .nonNull(.scalar(String.self))),
-        GraphQLField("active", type: .nonNull(.scalar(Bool.self))),
-        GraphQLField("updatedAt", type: .scalar(String.self)),
-        GraphQLField("activeAfter", type: .scalar(String.self)),
-        GraphQLField("revokeAfter", type: .scalar(String.self)),
+        GraphQLField("removeAfter", type: .scalar(String.self)),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -134,8 +161,8 @@ public final class GuardiansQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID, address: String, active: Bool, updatedAt: String? = nil, activeAfter: String? = nil, revokeAfter: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Guardian", "id": id, "address": address, "active": active, "updatedAt": updatedAt, "activeAfter": activeAfter, "revokeAfter": revokeAfter])
+      public init(id: GraphQLID, address: String, removeAfter: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Guardian", "id": id, "address": address, "removeAfter": removeAfter])
       }
 
       public var __typename: String {
@@ -165,93 +192,70 @@ public final class GuardiansQuery: GraphQLQuery {
         }
       }
 
-      public var active: Bool {
+      public var removeAfter: String? {
         get {
-          return resultMap["active"]! as! Bool
+          return resultMap["removeAfter"] as? String
         }
         set {
-          resultMap.updateValue(newValue, forKey: "active")
-        }
-      }
-
-      public var updatedAt: String? {
-        get {
-          return resultMap["updatedAt"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "updatedAt")
-        }
-      }
-
-      public var activeAfter: String? {
-        get {
-          return resultMap["activeAfter"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "activeAfter")
-        }
-      }
-
-      public var revokeAfter: String? {
-        get {
-          return resultMap["revokeAfter"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "revokeAfter")
+          resultMap.updateValue(newValue, forKey: "removeAfter")
         }
       }
     }
-  }
-}
 
-public final class GuardianActivityQuery: GraphQLQuery {
-  /// query GuardianActivity($wallet: Bytes) {
-  ///   guardianActivities(where: {wallet: $wallet}) {
-  ///     __typename
-  ///     id
-  ///     address
-  ///     state
-  ///     date
-  ///   }
-  /// }
-  public let operationDefinition =
-    "query GuardianActivity($wallet: Bytes) { guardianActivities(where: {wallet: $wallet}) { __typename id address state date } }"
+    public struct PendingGuardian: GraphQLSelectionSet, Identifiable {
+      public static let possibleTypes = ["PendingGuardian"]
 
-  public let operationName = "GuardianActivity"
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("address", type: .nonNull(.scalar(String.self))),
+        GraphQLField("addAfter", type: .nonNull(.scalar(String.self))),
+      ]
 
-  public var wallet: String?
+      public private(set) var resultMap: ResultMap
 
-  public init(wallet: String? = nil) {
-    self.wallet = wallet
-  }
-
-  public var variables: GraphQLMap? {
-    return ["wallet": wallet]
-  }
-
-  public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["Query"]
-
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("guardianActivities", arguments: ["where": ["wallet": GraphQLVariable("wallet")]], type: .nonNull(.list(.nonNull(.object(GuardianActivity.selections))))),
-    ]
-
-    public private(set) var resultMap: ResultMap
-
-    public init(unsafeResultMap: ResultMap) {
-      self.resultMap = unsafeResultMap
-    }
-
-    public init(guardianActivities: [GuardianActivity]) {
-      self.init(unsafeResultMap: ["__typename": "Query", "guardianActivities": guardianActivities.map { (value: GuardianActivity) -> ResultMap in value.resultMap }])
-    }
-
-    public var guardianActivities: [GuardianActivity] {
-      get {
-        return (resultMap["guardianActivities"] as! [ResultMap]).map { (value: ResultMap) -> GuardianActivity in GuardianActivity(unsafeResultMap: value) }
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
       }
-      set {
-        resultMap.updateValue(newValue.map { (value: GuardianActivity) -> ResultMap in value.resultMap }, forKey: "guardianActivities")
+
+      public init(id: GraphQLID, address: String, addAfter: String) {
+        self.init(unsafeResultMap: ["__typename": "PendingGuardian", "id": id, "address": address, "addAfter": addAfter])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var address: String {
+        get {
+          return resultMap["address"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "address")
+        }
+      }
+
+      public var addAfter: String {
+        get {
+          return resultMap["addAfter"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "addAfter")
+        }
       }
     }
 

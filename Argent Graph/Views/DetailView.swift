@@ -38,11 +38,25 @@ struct DetailView: View {
         
     var body: some View {
         List() {
-            GuardianSectionView(guardians: guardianData.pending, title: "Pending Guardians")
-            GuardianSectionView(guardians: guardianData.active, title: "Active Guardians")
+            Section(header: Text("Pending Guardians")) {
+                if guardianData.pending.isEmpty {
+                    EmptyInfoView(guardianType: "pending Guardians")
+                }
+                ForEach(guardianData.pending) { g in
+                    PendingGuardianRowView(guardian: g)
+                }
+            }
+            Section(header: Text("Active Guardians")) {
+                if guardianData.active.isEmpty {
+                    EmptyInfoView(guardianType: "active Guardians")
+                }
+                ForEach(guardianData.active) { g in
+                    GuardianRowView(guardian: g)
+                }
+            }
             Section(header: Text("Guardian History")) {
                 if guardianData.activity.isEmpty {
-                    EmptyInfoView(guardianType: "History")
+                    EmptyInfoView(guardianType: "history")
                 }
                 ForEach(guardianData.activity) { a in
                     GuardianActivityRowView(activity: a)
@@ -59,17 +73,16 @@ self.presentationMode.wrappedValue.dismiss()
     }
 }
 
-struct GuardianSectionView: View {
-    let guardians: [Guardian]
-    let title: String
+struct PendingGuardianRowView: View {
+    let guardian: PendingGuardian
     
     var body: some View {
-        Section(header: Text(title)) {
-            if guardians.isEmpty {
-                EmptyInfoView(guardianType: title)
-            }
-            ForEach(guardians) { g in
-                GuardianRowView(guardian: g)
+        NavigationLink(destination: DetailView(guardianData: GuardianModel(walletAddress: guardian.address))) {
+            VStack() {
+                Text(guardian.address.shortAddress)
+                Text(dateFormatter.string(from: guardian.addAfter.date))
+                    .font(.caption)
+                    .foregroundColor(.gray)
             }
         }
     }
@@ -79,9 +92,7 @@ struct GuardianRowView: View {
     let guardian: Guardian
     
     var subtitle: String? {
-        if let date = guardian.activeAfter?.date {
-            return "Add after \(dateFormatter.string(from: date))"
-        } else if let date = guardian.revokeAfter?.date {
+        if let date = guardian.removeAfter?.date {
             return "Remove after \(dateFormatter.string(from: date))"
         }
         
@@ -90,7 +101,7 @@ struct GuardianRowView: View {
     
     var body: some View {
         NavigationLink(destination: DetailView(guardianData: GuardianModel(walletAddress: guardian.address))) {
-            VStack(alignment: .leading) {
+            VStack() {
                 Text(guardian.address.shortAddress)
                 if subtitle != nil {
                     Text(subtitle!)

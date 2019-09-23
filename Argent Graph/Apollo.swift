@@ -9,8 +9,9 @@
 import Foundation
 import Apollo
 
+typealias PendingGuardian = GuardiansQuery.Data.PendingGuardian
 typealias Guardian = GuardiansQuery.Data.Guardian
-typealias GuardianActivity = GuardianActivityQuery.Data.GuardianActivity
+typealias GuardianActivity = GuardiansQuery.Data.GuardianActivity
 
 final class Apollo {
   static let shared = Apollo()

@@ -201,7 +201,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Go to the build root and go back up to where SPM keeps the apollo iOS framework checked out.\ncd \"${BUILD_ROOT}\"\ncd \"../../SourcePackages/checkouts/apollo-ios/scripts\"\n\nAPOLLO_SCRIPT_PATH=\"$(pwd)\"\n\nif [ -z \"${APOLLO_SCRIPT_PATH}\" ]; then\n    echo \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 0\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n# apollo schema:download --endpoint=https://api.thegraph.com/subgraphs/name/th3m477/argent\n#\"${APOLLO_SCRIPT_PATH}\"/check-and-run-apollo-cli.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+			shellScript = "# Go to the build root and go back up to where SPM keeps the apollo iOS framework checked out.\ncd \"${BUILD_ROOT}\"\ncd \"../../SourcePackages/checkouts/apollo-ios/scripts\"\n\nAPOLLO_SCRIPT_PATH=\"$(pwd)\"\n\nif [ -z \"${APOLLO_SCRIPT_PATH}\" ]; then\n    echo \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 0\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n# apollo schema:download --endpoint=https://api.thegraph.com/subgraphs/name/th3m477/argent\n# \"${APOLLO_SCRIPT_PATH}\"/check-and-run-apollo-cli.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

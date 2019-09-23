@@ -2,14 +2,13 @@ query Guardians($wallet: Bytes) {
   guardians(where: {wallet: $wallet}) {
     id
     address
-    active
-    updatedAt
-    activeAfter
-    revokeAfter
+    removeAfter
   }
-}
-
-query GuardianActivity($wallet: Bytes) {
+  pendingGuardians(where: {wallet: $wallet}) {
+    id
+    address
+    addAfter
+  }
   guardianActivities(where: {wallet: $wallet}) {
     id
     address

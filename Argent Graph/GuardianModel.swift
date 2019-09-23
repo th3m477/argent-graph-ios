@@ -10,7 +10,7 @@ import Foundation
 
 final class GuardianModel: ObservableObject {
     let walletAddress: String
-    @Published private(set) var pending = [Guardian]()
+    @Published private(set) var pending = [PendingGuardian]()
     @Published private(set) var active = [Guardian]()
     @Published private(set) var activity = [GuardianActivity]()
     
@@ -24,14 +24,8 @@ final class GuardianModel: ObservableObject {
         Apollo.shared.client.fetch(query: q) {
             result in
             guard let data = try? result.get().data else { return }
-            self.pending = data.guardians.filter { !$0.active }
-            self.active = data.guardians.filter { $0.active }
-        }
-        
-        let q2 = GuardianActivityQuery(wallet: walletAddress)
-        Apollo.shared.client.fetch(query: q2) {
-            result in
-            guard let data = try? result.get().data else { return }
+            self.pending = data.pendingGuardians
+            self.active = data.guardians
             self.activity = data.guardianActivities
                 .sorted(by: { (lhs, rhs) -> Bool in
                     lhs.date.date > rhs.date.date
