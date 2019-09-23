@@ -39,6 +39,9 @@ struct LookupView: View {
 
 struct LookupView_Previews: PreviewProvider {
     static var previews: some View {
-        LookupView()
+        Group() {
+            LookupView()
+            LookupView().environment(\.colorScheme, .dark)
+        }
     }
 }
