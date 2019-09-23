@@ -1,0 +1,30 @@
+type Guardian @entity {
+  id: ID!
+  address: Bytes! # address
+  wallet: Bytes! # address
+  removeAfter: BigInt # date
+}
+
+type PendingGuardian @entity {
+  id: ID!
+  address: Bytes! # address
+  wallet: Bytes! # address
+  addAfter: BigInt! # date
+}
+
+enum GuardianState {
+  requestedAddition
+  requestedRevocation
+  added
+  revoked
+  canceledAddition
+  canceledRevocation
+}
+
+type GuardianActivity @entity {
+  id: ID!
+  address: Bytes! # address
+  wallet: Bytes! # address
+  state: GuardianState!
+  date: BigInt! # date
+}
