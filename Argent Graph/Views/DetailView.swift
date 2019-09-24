@@ -78,9 +78,9 @@ struct PendingGuardianRowView: View {
     
     var body: some View {
         NavigationLink(destination: DetailView(guardianData: GuardianModel(walletAddress: guardian.address))) {
-            VStack() {
+            VStack(alignment: .leading) {
                 Text(guardian.address.shortAddress)
-                Text(dateFormatter.string(from: guardian.addAfter.date))
+                Text("Add after \(dateFormatter.string(from: guardian.addAfter.date))")
                     .font(.caption)
                     .foregroundColor(.gray)
             }
@@ -101,7 +101,7 @@ struct GuardianRowView: View {
     
     var body: some View {
         NavigationLink(destination: DetailView(guardianData: GuardianModel(walletAddress: guardian.address))) {
-            VStack() {
+            VStack(alignment: .leading) {
                 Text(guardian.address.shortAddress)
                 if subtitle != nil {
                     Text(subtitle!)
