@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C93F4714233B537600CBC9AD /* schema_ens.json in Resources */ = {isa = PBXBuildFile; fileRef = C93F4712233B537600CBC9AD /* schema_ens.json */; };
+		C93F4715233B537600CBC9AD /* schema_guardians.json in Resources */ = {isa = PBXBuildFile; fileRef = C93F4713233B537600CBC9AD /* schema_guardians.json */; };
+		C93F4717233B540E00CBC9AD /* ENSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93F4716233B540E00CBC9AD /* ENSAPI.swift */; };
+		C93F4719233B6B8500CBC9AD /* AddressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93F4718233B6B8500CBC9AD /* AddressStore.swift */; };
 		C9A614D423351999006C2613 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A614D323351999006C2613 /* AppDelegate.swift */; };
 		C9A614D623351999006C2613 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A614D523351999006C2613 /* SceneDelegate.swift */; };
 		C9A614D823351999006C2613 /* LookupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A614D723351999006C2613 /* LookupView.swift */; };
@@ -14,13 +18,18 @@
 		C9A614DD2335199D006C2613 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A614DC2335199D006C2613 /* Preview Assets.xcassets */; };
 		C9A614E02335199D006C2613 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A614DE2335199D006C2613 /* LaunchScreen.storyboard */; };
 		C9A614F72335204E006C2613 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = C9A614F62335204E006C2613 /* Apollo */; };
-		C9A614FC23352A78006C2613 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A614FB23352A78006C2613 /* API.swift */; };
+		C9A614FC23352A78006C2613 /* GuardianAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A614FB23352A78006C2613 /* GuardianAPI.swift */; };
 		C9A614FE23360A7D006C2613 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A614FD23360A7D006C2613 /* DetailView.swift */; };
 		C9B2E6C22337CBE500A6FB83 /* Apollo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B2E6C12337CBE500A6FB83 /* Apollo.swift */; };
-		C9B2E6C42337CC3700A6FB83 /* GuardianModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B2E6C32337CC3700A6FB83 /* GuardianModel.swift */; };
+		C9B2E6C42337CC3700A6FB83 /* GuardianStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B2E6C32337CC3700A6FB83 /* GuardianStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C93F470C233B4E8400CBC9AD /* ENS.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = ENS.graphql; sourceTree = "<group>"; };
+		C93F4712233B537600CBC9AD /* schema_ens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema_ens.json; sourceTree = "<group>"; };
+		C93F4713233B537600CBC9AD /* schema_guardians.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema_guardians.json; sourceTree = "<group>"; };
+		C93F4716233B540E00CBC9AD /* ENSAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSAPI.swift; sourceTree = "<group>"; };
+		C93F4718233B6B8500CBC9AD /* AddressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressStore.swift; sourceTree = "<group>"; };
 		C94B3EC42337D3890031D771 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C9A614D023351999006C2613 /* Argent Graph.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Argent Graph.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A614D323351999006C2613 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -31,10 +40,10 @@
 		C9A614DF2335199D006C2613 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9A614E12335199D006C2613 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9A614FA2335256C006C2613 /* Guardians.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Guardians.graphql; sourceTree = "<group>"; };
-		C9A614FB23352A78006C2613 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C9A614FB23352A78006C2613 /* GuardianAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuardianAPI.swift; sourceTree = "<group>"; };
 		C9A614FD23360A7D006C2613 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		C9B2E6C12337CBE500A6FB83 /* Apollo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apollo.swift; sourceTree = "<group>"; };
-		C9B2E6C32337CC3700A6FB83 /* GuardianModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardianModel.swift; sourceTree = "<group>"; };
+		C9B2E6C32337CC3700A6FB83 /* GuardianStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardianStore.swift; sourceTree = "<group>"; };
 		C9B2E6C62337D20500A6FB83 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,6 +59,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C93F471A233B76FC00CBC9AD /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				C9B2E6C32337CC3700A6FB83 /* GuardianStore.swift */,
+				C93F4718233B6B8500CBC9AD /* AddressStore.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		C93F471B233B771200CBC9AD /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C9A614FB23352A78006C2613 /* GuardianAPI.swift */,
+				C93F4716233B540E00CBC9AD /* ENSAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		C9A614C723351999006C2613 = {
 			isa = PBXGroup;
 			children = (
@@ -73,9 +100,9 @@
 			children = (
 				C9A614D323351999006C2613 /* AppDelegate.swift */,
 				C9A614D523351999006C2613 /* SceneDelegate.swift */,
-				C9A614FB23352A78006C2613 /* API.swift */,
 				C9B2E6C12337CBE500A6FB83 /* Apollo.swift */,
-				C9B2E6C32337CC3700A6FB83 /* GuardianModel.swift */,
+				C93F471B233B771200CBC9AD /* API */,
+				C93F471A233B76FC00CBC9AD /* Stores */,
 				C9B2E6C02337CBA500A6FB83 /* Views */,
 				C9B2E6C52337CD1C00A6FB83 /* Resources */,
 				C9A614DB2335199D006C2613 /* Preview Content */,
@@ -104,8 +131,11 @@
 			isa = PBXGroup;
 			children = (
 				C9A614D92335199D006C2613 /* Assets.xcassets */,
+				C93F4712233B537600CBC9AD /* schema_ens.json */,
+				C93F4713233B537600CBC9AD /* schema_guardians.json */,
 				C9A614DE2335199D006C2613 /* LaunchScreen.storyboard */,
 				C9A614FA2335256C006C2613 /* Guardians.graphql */,
+				C93F470C233B4E8400CBC9AD /* ENS.graphql */,
 				C9A614E12335199D006C2613 /* Info.plist */,
 			);
 			path = Resources;
@@ -177,6 +207,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9A614E02335199D006C2613 /* LaunchScreen.storyboard in Resources */,
+				C93F4714233B537600CBC9AD /* schema_ens.json in Resources */,
+				C93F4715233B537600CBC9AD /* schema_guardians.json in Resources */,
 				C9A614DD2335199D006C2613 /* Preview Assets.xcassets in Resources */,
 				C9A614DA2335199D006C2613 /* Assets.xcassets in Resources */,
 			);
@@ -201,7 +233,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Go to the build root and go back up to where SPM keeps the apollo iOS framework checked out.\ncd \"${BUILD_ROOT}\"\ncd \"../../SourcePackages/checkouts/apollo-ios/scripts\"\n\nAPOLLO_SCRIPT_PATH=\"$(pwd)\"\n\nif [ -z \"${APOLLO_SCRIPT_PATH}\" ]; then\n    echo \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 0\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n# apollo schema:download --endpoint=https://api.thegraph.com/subgraphs/name/th3m477/argent\n# \"${APOLLO_SCRIPT_PATH}\"/check-and-run-apollo-cli.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+			shellScript = "# Go to the build root and go back up to where SPM keeps the apollo iOS framework checked out.\ncd \"${BUILD_ROOT}\"\ncd \"../../SourcePackages/checkouts/apollo-ios/scripts\"\n\nAPOLLO_SCRIPT_PATH=\"$(pwd)\"\n\nif [ -z \"${APOLLO_SCRIPT_PATH}\" ]; then\n    echo \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 0\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\n# apollo schema:download --endpoint=https://api.thegraph.com/subgraphs/name/th3m477/argent\n# \"${APOLLO_SCRIPT_PATH}\"/check-and-run-apollo-cli.sh codegen:generate --target=swift --includes=${SRCROOT}/Argent\\ Graph/Resources/ENS.graphql --localSchemaFile=${SRCROOT}/Argent\\ Graph/Resources/schema_ens.json ENSAPI.swift\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -211,12 +243,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9A614D423351999006C2613 /* AppDelegate.swift in Sources */,
+				C93F4719233B6B8500CBC9AD /* AddressStore.swift in Sources */,
 				C9A614D623351999006C2613 /* SceneDelegate.swift in Sources */,
-				C9A614FC23352A78006C2613 /* API.swift in Sources */,
-				C9B2E6C42337CC3700A6FB83 /* GuardianModel.swift in Sources */,
+				C9A614FC23352A78006C2613 /* GuardianAPI.swift in Sources */,
+				C9B2E6C42337CC3700A6FB83 /* GuardianStore.swift in Sources */,
 				C9A614FE23360A7D006C2613 /* DetailView.swift in Sources */,
 				C9B2E6C22337CBE500A6FB83 /* Apollo.swift in Sources */,
 				C9A614D823351999006C2613 /* LookupView.swift in Sources */,
+				C93F4717233B540E00CBC9AD /* ENSAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

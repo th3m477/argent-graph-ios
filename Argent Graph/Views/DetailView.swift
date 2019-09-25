@@ -33,11 +33,16 @@ extension String {
 
 struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+    @EnvironmentObject var addressStore: AddressStore
     @ObservedObject var guardianData: GuardianModel
-        
+    
     var body: some View {
         List() {
+            HStack() {
+                Text("ENS")
+                Spacer()
+                Text(addressStore.domainsPerAddress[guardianData.resolvedAddress ?? ""]?.first ?? "-")
+            }
             Section(header: Text("Pending Guardians")) {
                 if guardianData.pending.isEmpty {
                     EmptyInfoView(guardianType: "pending Guardians")
@@ -64,7 +69,7 @@ struct DetailView: View {
             }
         }
         .listStyle(GroupedListStyle())
-        .navigationBarTitle(guardianData.walletAddress.shortAddress)
+        .navigationBarTitle(guardianData.resolvedAddress?.shortAddress ?? "0x")
         .navigationBarItems(trailing: Button(action: {
 self.presentationMode.wrappedValue.dismiss()
         }, label: {
@@ -75,11 +80,12 @@ self.presentationMode.wrappedValue.dismiss()
 
 struct PendingGuardianRowView: View {
     let guardian: PendingGuardian
+    @EnvironmentObject var addressStore: AddressStore
     
     var body: some View {
-        NavigationLink(destination: DetailView(guardianData: GuardianModel(walletAddress: guardian.address))) {
+        NavigationLink(destination: DetailView(guardianData: guardianStore.getModel(for: guardian.address))) {
             VStack(alignment: .leading) {
-                Text(guardian.address.shortAddress)
+                Text(addressStore.domainsPerAddress[guardian.address]?.first ?? guardian.address.shortAddress)
                 Text("Add after \(dateFormatter.string(from: guardian.addAfter.date))")
                     .font(.caption)
                     .foregroundColor(.gray)
@@ -90,6 +96,7 @@ struct PendingGuardianRowView: View {
 
 struct GuardianRowView: View {
     let guardian: Guardian
+    @EnvironmentObject var addressStore: AddressStore
     
     var subtitle: String? {
         if let date = guardian.removeAfter?.date {
@@ -100,9 +107,9 @@ struct GuardianRowView: View {
     }
     
     var body: some View {
-        NavigationLink(destination: DetailView(guardianData: GuardianModel(walletAddress: guardian.address))) {
+        NavigationLink(destination: DetailView(guardianData: guardianStore.getModel(for: guardian.address))) {
             VStack(alignment: .leading) {
-                Text(guardian.address.shortAddress)
+                Text(addressStore.domainsPerAddress[guardian.address]?.first ?? guardian.address.shortAddress)
                 if subtitle != nil {
                     Text(subtitle!)
                         .font(.caption)
@@ -138,11 +145,12 @@ extension GuardianState {
 
 struct GuardianActivityRowView: View {
     let activity: GuardianActivity
+    @EnvironmentObject var addressStore: AddressStore
     
     var body: some View {
-        NavigationLink(destination: DetailView(guardianData: GuardianModel(walletAddress: activity.address))) {
+        NavigationLink(destination: DetailView(guardianData: guardianStore.getModel(for: activity.address))) {
             VStack(alignment: .leading) {
-                Text(activity.address.shortAddress)
+                Text(addressStore.domainsPerAddress[activity.address]?.first ?? activity.address.shortAddress)
                 Text(activity.state.description(date: activity.date.date))
                     .font(.caption)
                     .foregroundColor(.gray)
@@ -163,7 +171,7 @@ struct EmptyInfoView: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView() {
-            DetailView(guardianData: GuardianModel(walletAddress: "0x0"))
+            DetailView(guardianData: guardianStore.getModel(for: "0x0"))
         }
     }
 }

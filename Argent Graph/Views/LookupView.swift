@@ -30,7 +30,7 @@ struct LookupView: View {
         .accentColor(Color("ArgentGreen"))
         .sheet(isPresented: $showDetail) {
             NavigationView() {
-                DetailView(guardianData: GuardianModel(walletAddress: self.walletAddress))
+                DetailView(guardianData: guardianStore.getModel(for: self.walletAddress)).environmentObject(addressStore)
             }
             .accentColor(Color("ArgentGreen"))
         }

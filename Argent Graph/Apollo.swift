@@ -15,6 +15,7 @@ typealias GuardianActivity = GuardiansQuery.Data.GuardianActivity
 
 final class Apollo {
   static let shared = Apollo()
-    
-  private(set) lazy var client = ApolloClient(url: URL(string: "https://api.thegraph.com/subgraphs/name/th3m477/argent")!)
+  
+  private(set) lazy var argent = ApolloClient(url: URL(string: "https://api.thegraph.com/subgraphs/name/th3m477/argent")!)
+  private(set) lazy var ens = ApolloClient(url: URL(string: "https://api.thegraph.com/subgraphs/name/ensdomains/ens")!)
 }

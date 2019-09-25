@@ -4,9 +4,11 @@
 
 ### About
 
-Uses a subgraph deployed on The Graph to explore Argent Wallet data.
+Uses two subgraphs deployed on The Graph to explore Argent Wallet data.
 
 https://thegraph.com/explorer/subgraph/th3m477/argent
+
+https://thegraph.com/explorer/subgraph/ensdomains/ens
 
 ### Installation
 
