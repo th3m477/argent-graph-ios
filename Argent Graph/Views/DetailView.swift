@@ -36,6 +36,10 @@ struct DetailView: View {
     @EnvironmentObject var addressStore: AddressStore
     @ObservedObject var guardianData: GuardianModel
     
+    private func ens(_ address: String) -> String? {
+        return addressStore.domainsPerAddress[address]?.first
+    }
+    
     var body: some View {
         List() {
             HStack() {
@@ -48,7 +52,7 @@ struct DetailView: View {
                     EmptyInfoView(guardianType: "pending Guardians")
                 }
                 ForEach(guardianData.pending) { g in
-                    PendingGuardianRowView(guardian: g)
+                    PendingGuardianRowView(guardian: g, ens: self.ens(g.address))
                 }
             }
             Section(header: Text("Active Guardians")) {
@@ -56,7 +60,7 @@ struct DetailView: View {
                     EmptyInfoView(guardianType: "active Guardians")
                 }
                 ForEach(guardianData.active) { g in
-                    GuardianRowView(guardian: g)
+                    GuardianRowView(guardian: g, ens: self.ens(g.address))
                 }
             }
             Section(header: Text("Guardian History")) {
@@ -64,7 +68,7 @@ struct DetailView: View {
                     EmptyInfoView(guardianType: "history")
                 }
                 ForEach(guardianData.activity) { a in
-                    GuardianActivityRowView(activity: a)
+                    GuardianActivityRowView(activity: a, ens: self.ens(a.address))
                 }
             }
         }
@@ -80,12 +84,12 @@ self.presentationMode.wrappedValue.dismiss()
 
 struct PendingGuardianRowView: View {
     let guardian: PendingGuardian
-    @EnvironmentObject var addressStore: AddressStore
+    let ens: String?
     
     var body: some View {
         NavigationLink(destination: DetailView(guardianData: guardianStore.getModel(for: guardian.address))) {
             VStack(alignment: .leading) {
-                Text(addressStore.domainsPerAddress[guardian.address]?.first ?? guardian.address.shortAddress)
+                Text(ens ?? guardian.address.shortAddress)
                 Text("Add after \(dateFormatter.string(from: guardian.addAfter.date))")
                     .font(.caption)
                     .foregroundColor(.gray)
@@ -96,7 +100,7 @@ struct PendingGuardianRowView: View {
 
 struct GuardianRowView: View {
     let guardian: Guardian
-    @EnvironmentObject var addressStore: AddressStore
+    let ens: String?
     
     var subtitle: String? {
         if let date = guardian.removeAfter?.date {
@@ -109,7 +113,7 @@ struct GuardianRowView: View {
     var body: some View {
         NavigationLink(destination: DetailView(guardianData: guardianStore.getModel(for: guardian.address))) {
             VStack(alignment: .leading) {
-                Text(addressStore.domainsPerAddress[guardian.address]?.first ?? guardian.address.shortAddress)
+                Text(ens ?? guardian.address.shortAddress)
                 if subtitle != nil {
                     Text(subtitle!)
                         .font(.caption)
@@ -145,12 +149,12 @@ extension GuardianState {
 
 struct GuardianActivityRowView: View {
     let activity: GuardianActivity
-    @EnvironmentObject var addressStore: AddressStore
+    let ens: String?
     
     var body: some View {
         NavigationLink(destination: DetailView(guardianData: guardianStore.getModel(for: activity.address))) {
             VStack(alignment: .leading) {
-                Text(addressStore.domainsPerAddress[activity.address]?.first ?? activity.address.shortAddress)
+                Text(ens ?? activity.address.shortAddress)
                 Text(activity.state.description(date: activity.date.date))
                     .font(.caption)
                     .foregroundColor(.gray)
