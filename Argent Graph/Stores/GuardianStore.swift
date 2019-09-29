@@ -44,7 +44,7 @@ final class GuardianModel: ObservableObject {
             reload(address: ensOrAddress)
             addressStore.loadDomains(for: ensOrAddress)
         } else if ensOrAddress.contains(".") {
-            lookupENSThenReload(ens: ensOrAddress)
+            lookupENSThenReload(ens: ensOrAddress.lowercased())
         } else {
             lookupENSThenReload(ens: "\(ensOrAddress.lowercased()).argent.xyz")
             addressStore.loadDomains(for: ensOrAddress)
