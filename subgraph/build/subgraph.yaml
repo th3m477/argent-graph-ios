@@ -3,12 +3,35 @@ schema:
   file: schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: TransferManager
+    name: TransferManagerV2
     network: mainnet
     source:
       address: "0x103675510a219bd84CE91d1bcb82Ca194D665a09"
       abi: TransferManager
       startBlock: 10020276
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - AddedToWhitelist
+        - RemovedFromWhitelist
+      abis:
+        - name: TransferManager
+          file: TransferManagerV2/abis/TransferManager.json
+      eventHandlers:
+        - event: AddedToWhitelist(indexed address,indexed address,uint64)
+          handler: handleAddedToWhitelist
+        - event: RemovedFromWhitelist(indexed address,indexed address)
+          handler: handleRemovedFromWhitelist
+      file: TransferManagerV2/TransferManagerV2.wasm
+  - kind: ethereum/contract
+    name: TransferManager
+    network: mainnet
+    source:
+      address: "0x2B6D87F12B106E1D3fA7137494751566329d1045"
+      abi: TransferManager
+      startBlock: 9015852
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -24,4 +47,4 @@ dataSources:
           handler: handleAddedToWhitelist
         - event: RemovedFromWhitelist(indexed address,indexed address)
           handler: handleRemovedFromWhitelist
-      file: TransferManager/TransferManager.wasm
+      file: TransferManagerV2/TransferManagerV2.wasm
