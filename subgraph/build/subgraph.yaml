@@ -3,31 +3,25 @@ schema:
   file: schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: Contract
+    name: TransferManager
     network: mainnet
     source:
-      address: "0xFF5A7299ff6f0fbAad9b38906b77d08c0FBdc9A7"
-      abi: GuardianManager
+      address: "0x103675510a219bd84CE91d1bcb82Ca194D665a09"
+      abi: TransferManager
+      startBlock: 10020276
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.3
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - Guardian
+        - AddedToWhitelist
+        - RemovedFromWhitelist
       abis:
-        - name: GuardianManager
-          file: Contract/abis/GuardianManager.json
+        - name: TransferManager
+          file: TransferManager/abis/TransferManager.json
       eventHandlers:
-        - event: GuardianAdditionRequested(indexed address,indexed address,uint256)
-          handler: handleGuardianAdditionRequested
-        - event: GuardianRevokationRequested(indexed address,indexed address,uint256)
-          handler: handleGuardianRevokationRequested
-        - event: GuardianAdditionCancelled(indexed address,indexed address)
-          handler: handleGuardianAdditionCancelled
-        - event: GuardianRevokationCancelled(indexed address,indexed address)
-          handler: handleGuardianRevokationCancelled
-        - event: GuardianAdded(indexed address,indexed address)
-          handler: handleGuardianAdded
-        - event: GuardianRevoked(indexed address,indexed address)
-          handler: handleGuardianRevoked
-      file: Contract/Contract.wasm
+        - event: AddedToWhitelist(indexed address,indexed address,uint64)
+          handler: handleAddedToWhitelist
+        - event: RemovedFromWhitelist(indexed address,indexed address)
+          handler: handleRemovedFromWhitelist
+      file: TransferManager/TransferManager.wasm

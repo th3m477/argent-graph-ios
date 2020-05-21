@@ -12,7 +12,7 @@ import {
   BigDecimal
 } from "@graphprotocol/graph-ts";
 
-export class Guardian extends Entity {
+export class WhitelistedAddress extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -20,17 +20,17 @@ export class Guardian extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save Guardian entity without an ID");
+    assert(id !== null, "Cannot save WhitelistedAddress entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save Guardian entity with non-string ID. " +
+      "Cannot save WhitelistedAddress entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("Guardian", id.toString(), this);
+    store.set("WhitelistedAddress", id.toString(), this);
   }
 
-  static load(id: string): Guardian | null {
-    return store.get("Guardian", id) as Guardian | null;
+  static load(id: string): WhitelistedAddress | null {
+    return store.get("WhitelistedAddress", id) as WhitelistedAddress | null;
   }
 
   get id(): string {
@@ -51,154 +51,69 @@ export class Guardian extends Entity {
     this.set("address", Value.fromBytes(value));
   }
 
-  get wallet(): Bytes {
+  get activeAfter(): BigInt {
+    let value = this.get("activeAfter");
+    return value.toBigInt();
+  }
+
+  set activeAfter(value: BigInt) {
+    this.set("activeAfter", Value.fromBigInt(value));
+  }
+
+  get wallet(): string {
     let value = this.get("wallet");
-    return value.toBytes();
+    return value.toString();
   }
 
-  set wallet(value: Bytes) {
-    this.set("wallet", Value.fromBytes(value));
+  set wallet(value: string) {
+    this.set("wallet", Value.fromString(value));
+  }
+}
+
+export class Wallet extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
   }
 
-  get removeAfter(): BigInt | null {
-    let value = this.get("removeAfter");
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save Wallet entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save Wallet entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("Wallet", id.toString(), this);
+  }
+
+  static load(id: string): Wallet | null {
+    return store.get("Wallet", id) as Wallet | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get whitelist(): Array<string> | null {
+    let value = this.get("whitelist");
     if (value === null) {
       return null;
     } else {
-      return value.toBigInt();
+      return value.toStringArray();
     }
   }
 
-  set removeAfter(value: BigInt | null) {
+  set whitelist(value: Array<string> | null) {
     if (value === null) {
-      this.unset("removeAfter");
+      this.unset("whitelist");
     } else {
-      this.set("removeAfter", Value.fromBigInt(value as BigInt));
+      this.set("whitelist", Value.fromStringArray(value as Array<string>));
     }
-  }
-}
-
-export class PendingGuardian extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id !== null, "Cannot save PendingGuardian entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save PendingGuardian entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("PendingGuardian", id.toString(), this);
-  }
-
-  static load(id: string): PendingGuardian | null {
-    return store.get("PendingGuardian", id) as PendingGuardian | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get address(): Bytes {
-    let value = this.get("address");
-    return value.toBytes();
-  }
-
-  set address(value: Bytes) {
-    this.set("address", Value.fromBytes(value));
-  }
-
-  get wallet(): Bytes {
-    let value = this.get("wallet");
-    return value.toBytes();
-  }
-
-  set wallet(value: Bytes) {
-    this.set("wallet", Value.fromBytes(value));
-  }
-
-  get addAfter(): BigInt {
-    let value = this.get("addAfter");
-    return value.toBigInt();
-  }
-
-  set addAfter(value: BigInt) {
-    this.set("addAfter", Value.fromBigInt(value));
-  }
-}
-
-export class GuardianActivity extends Entity {
-  constructor(id: string) {
-    super();
-    this.set("id", Value.fromString(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id !== null, "Cannot save GuardianActivity entity without an ID");
-    assert(
-      id.kind == ValueKind.STRING,
-      "Cannot save GuardianActivity entity with non-string ID. " +
-        'Considering using .toHex() to convert the "id" to a string.'
-    );
-    store.set("GuardianActivity", id.toString(), this);
-  }
-
-  static load(id: string): GuardianActivity | null {
-    return store.get("GuardianActivity", id) as GuardianActivity | null;
-  }
-
-  get id(): string {
-    let value = this.get("id");
-    return value.toString();
-  }
-
-  set id(value: string) {
-    this.set("id", Value.fromString(value));
-  }
-
-  get address(): Bytes {
-    let value = this.get("address");
-    return value.toBytes();
-  }
-
-  set address(value: Bytes) {
-    this.set("address", Value.fromBytes(value));
-  }
-
-  get wallet(): Bytes {
-    let value = this.get("wallet");
-    return value.toBytes();
-  }
-
-  set wallet(value: Bytes) {
-    this.set("wallet", Value.fromBytes(value));
-  }
-
-  get state(): string {
-    let value = this.get("state");
-    return value.toString();
-  }
-
-  set state(value: string) {
-    this.set("state", Value.fromString(value));
-  }
-
-  get date(): BigInt {
-    let value = this.get("date");
-    return value.toBigInt();
-  }
-
-  set date(value: BigInt) {
-    this.set("date", Value.fromBigInt(value));
   }
 }
